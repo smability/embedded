@@ -37,7 +37,7 @@ ISR(WDT_vect) {
 		// seconds.
 		//int count; otherwise, we are initializing this variable, to 0, every time ISR is called
 		//Serial.println(count);
-		if(count == 15){
+		if(count == 15){//how much time, in sleep mode, equal 1 count?
 		  f_wdt=1;
 		  count=0;
 		}
@@ -277,7 +277,7 @@ char variable;
 	            || sendATcommand("AT+CREG?", "+CREG: 0,1", 600)
 	            || sendATcommand("AT+CREG?", "+CREG: 2,1", 600)) == 0 ){
 								countloop++;
-								if(countloop >= 8){
+								if(countloop >= 8){ //Why 8 countloops?
 									break;
 								}
 							};
@@ -338,7 +338,7 @@ char variable;
       delay(100);
     	sendATcommand("AT+HTTPPARA=\"CID\",1", "OK", 10000);
 
-	    if(countloop < 3){
+	    if(countloop < 3){ //Why 3 countloop?
 	      SIM_state = SENDPARA;
 	      Serial.println(F("Init Http functional!"));
 			}
@@ -356,7 +356,7 @@ char variable;
      countloop=1;
      while (sendATcommand("AT+HTTPACTION=0", "+HTTPACTION: 0,200,34", 11000) != 1){ //45 is the lenght of char text from file csv2sql
 			 delay(3);
-			 if(countloop >= 120){
+			 if(countloop >= 120){ //Why 120 countloop?
 					break;
 			};
 			countloop++;
